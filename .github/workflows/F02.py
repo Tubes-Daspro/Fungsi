@@ -3,12 +3,12 @@ def Login(user):
     password = input("Masukkan password: ")
     find = False
     for array_data in user:
-        i = 0
+        i = 1
         if (i == 0 and username == array_data[i]):
             find = True
             break
     if(find == True):
-        i = 1
+        i = 2
         right_password = False
         for array_data in user:
             if(array_data[i] == password):
