@@ -4,7 +4,7 @@ def Login(user):
     find = False
     for array_data in user:
         i = 1
-        if (i == 0 and username == array_data[i]):
+        if (username == array_data[i]):
             find = True
             break
     if(find == True):
