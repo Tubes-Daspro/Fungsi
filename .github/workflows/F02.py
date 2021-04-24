@@ -14,8 +14,10 @@ def Login(user):
             if(array_data[i] == password):
                 right_password = True
                 print("Anda berhasil masuk ke sistem!")
+                right_username = username
                 break
         if(right_password == False):
             print("Password yang Anda masukkan salah.")
     else:
         print("Username yang anda masukkan tidak terdaftar di sistem kami.")
+    return right_username
