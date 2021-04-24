@@ -10,3 +10,4 @@ def Register(user):
         else:
             data[i] = input("Masukkan alamat anda: ")
     user.append(data)
+    return user
