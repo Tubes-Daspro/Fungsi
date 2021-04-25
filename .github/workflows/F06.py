@@ -1,4 +1,16 @@
+# F06 Menghapus Item dari Database
+
 def adminpool():
+    # Mengumpulkan akun-akun yang statusnya administator.
+    # Output: (array of [integer,string,string,string,string,string])
+
+    # KAMUS LOKAL
+
+    # VARIABEL
+    # Admins : array (Berupa kumpulan akun-akun admin. Akan berubah menjadi variabel global)
+    # i,j : integer (Counter untuk iterasi.)
+
+    # ALGORITMA    
     global Admins
     Admins = []
     for i in range(len(user)):
@@ -8,19 +20,42 @@ def adminpool():
                     Admins.append(user[i])
 
 def adminconfirm():
+    # Mengecek apakah user yang logged in berupa admin atau tidak.
+    # Output: bool
+
+    # KAMUS LOKAL
+
+    # VARIABEL
+    # AdminStatus : bool (Status akun yang logged in apakah admin atau bukan. Akan berubah menjadi variabel global.)
+    # i,j : integer (Counter untuk iterasi.)
+
+    # ALGORITMA
+    global AdminStatus
+    AdminStatus = False
     for i in range(len(Admins)):
         for j in range(len(Admins[i])):
             if j == 1:
                 if Admins[i][j] == username:
-                    global AdminStatus
                     AdminStatus = True
 
 def hapusitem():
+    # Menghapus item dari repository.
+    # Output: deletion of array of [integer,string,string,integer,string,integer]
+
+    # KAMUS LOKAL
+
+    # VARIABEL
+    # ID : integer (Input berupa id dari barang yang akan di delete.)
+    # removetarget : array (Array dari benda yang akan dihapus.)
+    # ver : string (Verifikasi apakah benda akan benar dihapus.)
+    # i,j,l,m,a,b,c,d : integer (Counter untuk iterasi.)
+
+    # ALGORITMA
     while True:
         if AdminStatus == True:
             removetarget = 0
             ID = input("Masukkan ID item: ")
-            for i in range(len(gadget)):
+            for i in range(len(gadget)): # Penentuan target benda yang akan dihapus.
                 for j in range(len(gadget[i])):
                     if j == 0:
                         if gadget[i][j] == ID:
@@ -32,9 +67,9 @@ def hapusitem():
                         if consumable[l][m] == ID:
                             removetarget = consumable[l]
             
-            if removetarget != 0:
-                ver = input("Apakah anda yakin ingin menghapus " + removetarget[1] + "? (Y/N) ")
-                if ver == "Y":
+            if removetarget != 0: # Pengecekan apakah target terdapat di repository.
+                ver = input("Apakah anda yakin ingin menghapus " + removetarget[1] + "? (Y/N) ") # Verifikasi apakah yakin atas penghapusan.
+                if ver == "Y": # Penghapusan target.
                     for a in range(len(gadget)):
                         for b in range(len(gadget[a])):
                             if b == 0:
@@ -71,3 +106,4 @@ def hapusitem():
         elif AdminStatus == False:
             print("Access Denied")
             break
+
