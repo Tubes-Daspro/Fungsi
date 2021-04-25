@@ -24,6 +24,7 @@ def Register(user):
         for i in range(5):
             if   (i == 1):
                 inputdata[i] = input("Masukkan nama Anda: ")
+                inputdata[i] = inputdata[i].title()
             elif (i == 2):
                 inputdata[i] = input("Masukkan username: ")
                 for array_data in user:
