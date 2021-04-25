@@ -3,8 +3,9 @@ def Register(user):
     inputdata[0] = str(len(user))
     check = False
     for i in range(5):
-        if   (i == 1):
+        if  (i == 1):
             inputdata[i] = input("Masukkan nama Anda: ")
+            inputdata[i] = inputdata[i].title()
         elif (i == 2):
             inputdata[i] = input("Masukkan username: ")
             for array_data in user:
