@@ -17,22 +17,29 @@ def adminconfirm():
     return AdminStatus
 
 def Register(user):
-    data = [0 for i in range(6)]
     if(AdminStatus):
-        for i in range (6):
-            if (i == 0):
-                data[i] = input("Masukkan id: ")
-            elif(i == 1):
-                data[i] = input("Masukkan username: ")
-            elif(i == 2):
-                data[i] = input("Masukkan nama: ")
+        inputdata = [0 for i in range (6)]
+        inputdata[0] = str(len(user))
+        check = False
+        for i in range(5):
+            if   (i == 1):
+                inputdata[i] = input("Masukkan nama Anda: ")
+            elif (i == 2):
+                inputdata[i] = input("Masukkan username: ")
+                for array_data in user:
+                    if(array_data[i] == inputdata[i]):
+                        print("Username sudah ada.")
+                        check = True
+                    break
+                if(check):
+                    break
             elif (i == 3):
-                data[i] = input("Masukkan alamat: ")
+                inputdata[i] = input("Masukkan password: ")
             elif (i == 4):
-                data[i] = input("Masukkan password: ")
-            else:
-                data[i] = input("Masukkan role: ")
-        user.append(data)
+                inputdata[i] = input("Masukkan alamat: ")
+            inputdata[5] = "User"
+        if (check == False):
+            user.append(inputdata)
     else:
         print("Access Denied.")
     return user
