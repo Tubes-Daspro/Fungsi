@@ -1,22 +1,3 @@
-def adminpool():
-    global Admins
-    Admins = []
-    for i in range(len(user)):
-        for j in range(len(user[i])):
-            if j == 5:
-                if user[i][j] == "Admin":
-                    Admins.append(user[i])
-
-def adminconfirm():
-    for i in range(len(Admins)):
-        for j in range(len(Admins[i])):
-            if j == 1:
-                if Admins[i][j] == username:
-                    global AdminStatus
-                    AdminStatus = True
-    return AdminStatus
-
-#Fungsi Utamanya yang di bawah itu yang di atas catatan aja biar gw kmrn kebayang codingnya gimana rightt
 def ubah_Jumlah(array_data):
     if(AdminStatus):
         id_item = input("Masukkan ID: ")
