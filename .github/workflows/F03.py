@@ -34,6 +34,7 @@ def carirarity():
                     print("Tahun Ditemukan  : ", HasilPencarian[a][5])
                     print()
             
+                break
             else:
                 print("Tidak ada gadget yang ditemukan.")
             break
