@@ -1,21 +1,4 @@
-def adminpool():
-    global Admins
-    Admins = []
-    for i in range(len(user)):
-        for j in range(len(user[i])):
-            if j == 5:
-                if user[i][j] == "Admin":
-                    Admins.append(user[i])
-
-def adminconfirm():
-    for i in range(len(Admins)):
-        for j in range(len(Admins[i])):
-            if j == 1:
-                if Admins[i][j] == username:
-                    global AdminStatus
-                    AdminStatus = True
-    return AdminStatus
-
+#Fungsi menambah item
 def tambah_item(array_data):
     if(AdminStatus):
         i = 0
