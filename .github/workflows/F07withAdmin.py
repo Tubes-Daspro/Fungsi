@@ -16,6 +16,7 @@ def adminconfirm():
                     AdminStatus = True
     return AdminStatus
 
+#Fungsi Utamanya yang di bawah itu yang di atas catatan aja biar gw kmrn kebayang codingnya gimana rightt
 def ubah_Jumlah(array_data):
     if(AdminStatus):
         id_item = input("Masukkan ID: ")
