@@ -1,6 +1,6 @@
 # F04 Cari Gadget Berdasarkan Tahun Ditemukan
 
-def caritahun():
+def caritahun(gadget):
     # Mencari gadget yang tahun ditemukannya yang cocok dengan spesifikasi tahun yang diinput.
     # Output: (array of [string,string,integer,string,integer])
 
