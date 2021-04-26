@@ -2,6 +2,9 @@ from LoadSave import *
 import argparse
 from os import system, name, path
 
+from F03 import carirarity
+from F04 import caritahun
+from F06 import hapusitem
 from F08 import pinjam_gadget
 from F09 import kembalikan_gadget
 from F10 import minta_consumable
@@ -82,11 +85,13 @@ if role == "Admin":
         if jawab == "1" :
             register(data_user)
         elif jawab == "2" :
-            print("BELUM AKTIF")
+            carirarity(data_gadget)
+        elif jawab == "3" :
+            caritahun(data_gadget)
         elif jawab == "4" :
             print("BELUM AKTIF")
         elif jawab == "5" :
-            print("BELUM AKTIF")
+            hapusitem(data_gadget,data_consumable)
         elif jawab == "6" :
             print("BELUM AKTIF")
         elif jawab == "7" :
@@ -132,9 +137,9 @@ else: #role == "User"
 
         jawab = input("Silahkan pilih: ")
         if jawab == "1" :
-            print("BELUM AKTIF")
+            carirarity(data_gadget)
         elif jawab == "2" :
-            print("BELUM AKTIF")
+            caritahun(data_gadget)
         elif jawab == "3":
             (data_gadget,data_gadget_borrow_history) = pinjam_gadget(data_gadget, data_gadget_borrow_history, data_gadget_return_history, id_user)
         elif jawab == "4" :
