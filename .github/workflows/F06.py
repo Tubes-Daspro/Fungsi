@@ -38,7 +38,7 @@ def adminconfirm():
                 if Admins[i][j] == username:
                     AdminStatus = True
 
-def hapusitem():
+def hapusitem(gadget,consumable):
     # Menghapus item dari repository.
     # Output: deletion of array of [integer,string,string,integer,string,integer]
 
@@ -52,58 +52,52 @@ def hapusitem():
 
     # ALGORITMA
     while True:
-        if AdminStatus == True:
-            removetarget = 0
-            ID = input("Masukkan ID item: ")
-            for i in range(len(gadget)): # Penentuan target benda yang akan dihapus.
-                for j in range(len(gadget[i])):
-                    if j == 0:
-                        if gadget[i][j] == ID:
-                            removetarget = gadget[i]
+        removetarget = 0
+        ID = input("Masukkan ID item: ")
+        for i in range(len(gadget)): # Penentuan target benda yang akan dihapus.
+            for j in range(len(gadget[i])):
+                if j == 0:
+                    if gadget[i][j] == ID:
+                        removetarget = gadget[i]
             
-            for l in range(len(consumable)):
-                for m in range(len(consumable[l])):
-                    if m == 0:
-                        if consumable[l][m] == ID:
-                            removetarget = consumable[l]
+        for l in range(len(consumable)):
+            for m in range(len(consumable[l])):
+                if m == 0:
+                    if consumable[l][m] == ID:
+                        removetarget = consumable[l]
             
-            if removetarget != 0: # Pengecekan apakah target terdapat di repository.
-                ver = input("Apakah anda yakin ingin menghapus " + removetarget[1] + "? (Y/N) ") # Verifikasi apakah yakin atas penghapusan.
-                if ver == "Y": # Penghapusan target.
-                    for a in range(len(gadget)):
-                        for b in range(len(gadget[a])):
-                            if b == 0:
-                                if gadget[a][b] == removetarget[0]:
-                                    gadget.pop(a)
-                                    print()
-                                    print("Item telah berhasil dihapus dari database.")
+        if removetarget != 0: # Pengecekan apakah target terdapat di repository.
+            ver = input("Apakah anda yakin ingin menghapus " + removetarget[1] + "? (Y/N) ") # Verifikasi apakah yakin atas penghapusan.
+            if ver == "Y": # Penghapusan target.
+                for a in range(len(gadget)):
+                    for b in range(len(gadget[a])):
+                        if b == 0:
+                            if gadget[a][b] == removetarget[0]:
+                                gadget.pop(a)
+                                print()
+                                print("Item telah berhasil dihapus dari database.")
                    
-                    for c in range(len(consumable)):
-                        for d in range(len(consumable[c])):
-                            if d == 0:
-                                if consumable[c][d] == removetarget[0]:
-                                    consumable.pop(c)
-                                    print()
-                                    print("Item telah berhasil dihapus dari database.")
+                for c in range(len(consumable)):
+                    for d in range(len(consumable[c])):
+                        if d == 0:
+                            if consumable[c][d] == removetarget[0]:
+                                consumable.pop(c)
+                                print()
+                                print("Item telah berhasil dihapus dari database.")
 
-                    break
+                break
                                           
-                elif ver == "N":
-                    print()
-                    print("Item tidak jadi dihapus.")
-                    break
+            elif ver == "N":
+                print()
+                print("Item tidak jadi dihapus.")
+                break
                 
-                else:
-                    print()
-                    print("Masukkan invalid. Item tidak jadi dihapus.")
-                    break
-            
             else:
                 print()
-                print("Tidak ada item dengan ID tersebut.")
+                print("Masukkan invalid. Item tidak jadi dihapus.")
                 break
-
-        elif AdminStatus == False:
-            print("Access Denied")
+            
+        else:
+            print()
+            print("Tidak ada item dengan ID tersebut.")
             break
-
