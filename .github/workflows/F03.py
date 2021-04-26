@@ -1,6 +1,6 @@
 # F03 Cari Rarity Gadget
 
-def carirarity():
+def carirarity(gadget):
     # Mencari gadget yang rarity sama dengan rarity yang diinput.
     # Output: (array of [string,string,integer,string,integer])
 
