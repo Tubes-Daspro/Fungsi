@@ -196,6 +196,7 @@ elif role == "User":
             jwb = input("Apakah Anda ingin menyimpan perubahan pada file?(Y/N) : ")
             if jwb == "Y" or jwb == "y":
                 simpan()
+                print("Perubahan berhasil disimpan.")
                 print("Terima kasih telah berkunjung!")
                 break
             elif jwb == "N" or jwb == "n" :
