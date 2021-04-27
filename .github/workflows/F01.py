@@ -1,7 +1,6 @@
 def Register(user):
-    if(AdminStatus):
         inputdata = [0 for i in range (6)]
-        inputdata[0] = str(len(user))
+        inputdata[0] = str(len(user)+1)
         check = False
         for i in range(5):
             if   (i == 1):
@@ -23,6 +22,4 @@ def Register(user):
             inputdata[5] = "User"
         if (check == False):
             user.append(inputdata)
-    else:
-        print("Access Denied.")
-    return user
+    return 
