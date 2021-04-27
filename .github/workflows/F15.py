@@ -11,6 +11,7 @@ def save(data, header, pemisah, file):
     f = open(file, "w")
     f.write(ubah_ke_string(data,header,pemisah))
     f.close()
+    return
 
 def simpan():
     folder = input("Masukkan nama folder penyimpanan: ")
@@ -22,3 +23,4 @@ def simpan():
     save(data_user, header_user, ";", path.join(folder, "user.csv"))
     save(data_gadget_borrow_history, header_gadget_borrow_history, ";", path.join(folder, "gadget_borrow_history.csv"))
     save(data_gadget_return_history, header_gadget_return_history, ";", path.join(folder, "gadget_return_history.csv"))
+    return
