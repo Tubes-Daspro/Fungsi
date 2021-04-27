@@ -34,6 +34,9 @@ header_user, data_user = load(path.join(args.folder, "user.csv"), ";", [])
 
 print("Loading data...\n\n")
 
+role = 0
+status_login = 0
+id_user = 0
 
 while True:
     print()
@@ -44,7 +47,7 @@ while True:
     print("3. Exit")
     print()
 
-    jawaban = input("Silahkan pilih: ")
+    jawaban = input("Silahkan pilih (1 - 3): ")
 
     if jawaban == "1":
         role, status_login, id_user = login(data_user)
@@ -110,7 +113,16 @@ if role == "Admin":
         elif jawab == "10" :
             simpan()
         elif jawab == "11" :
-            help_admin()
+            while True:
+                help_admin()
+                x = input("Mengerti?(Y/N)")
+                if x == "Y" or x == "y":
+                    break
+                elif x == "N" or x == "n":
+                    continue
+                else :
+                    print("Saya anggap sudah mengerti.")
+                    break
         elif jawab == "12" :
             jwb = input("Apakah Anda ingin menyimpan perubahan pada file?(Y/N) : ")
             if jwb == "Y" or jwb == "y":
@@ -126,7 +138,7 @@ if role == "Admin":
         else :
             print("Input tidak valid! Silahkan coba lagi.")
 
-else: #role == "User"
+elif role == "User":
     while True:
         print()
         print("============Doraemonangis Mystic Pouch of Pien=============")
@@ -156,7 +168,16 @@ else: #role == "User"
         elif jawab == "6" :
             simpan()
         elif jawab == "7" :
-            help_user()
+            while True:
+                help_user()
+                x = input("Mengerti?(Y/N)")
+                if x == "Y" or x == "y":
+                    break
+                elif x == "N" or x == "n":
+                    continue
+                else :
+                    print("Saya anggap sudah mengerti.")
+                    break
         elif jawab == "8" :
             jwb = input("Apakah Anda ingin menyimpan perubahan pada file?(Y/N) : ")
             if jwb == "Y" or jwb == "y":
