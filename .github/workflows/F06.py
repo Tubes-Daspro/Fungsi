@@ -76,7 +76,8 @@ def hapusitem(gadget,consumable):
                                 gadget.pop(a)
                                 print()
                                 print("Item telah berhasil dihapus dari database.")
-                   
+                                break
+
                 for c in range(len(consumable)):
                     for d in range(len(consumable[c])):
                         if d == 0:
@@ -84,9 +85,9 @@ def hapusitem(gadget,consumable):
                                 consumable.pop(c)
                                 print()
                                 print("Item telah berhasil dihapus dari database.")
-
-                break
+                                break
                                           
+                break
             elif ver == "N":
                 print()
                 print("Item tidak jadi dihapus.")
