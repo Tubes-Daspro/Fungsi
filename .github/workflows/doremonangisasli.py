@@ -28,7 +28,7 @@ args = parser.parse_args()
 header_consumable_history, data_consumable_history = load(path.join(args.folder, "consumable_history.csv"), ";", [4])
 header_consumable, data_consumable = load(path.join(args.folder, "consumable.csv"), ";", [3])
 header_gadget_borrow_history, data_gadget_borrow_history = load(path.join(args.folder, "gadget_borrow_history.csv"), ";", [4])
-header_gadget_return_history, data_gadget_return_history = load(path.join(args.folder, "gadget_return_history.csv"), ";", [])
+header_gadget_return_history, data_gadget_return_history = load(path.join(args.folder, "gadget_return_history.csv"), ";", [3,4])
 header_gadget, data_gadget = load(path.join(args.folder, "gadget.csv"), ";", [3,5])
 header_user, data_user = load(path.join(args.folder, "user.csv"), ";", [])
 
