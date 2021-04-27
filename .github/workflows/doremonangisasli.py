@@ -4,6 +4,7 @@ from os import system, name, path
 
 from F03 import carirarity
 from F04 import caritahun
+from F05 import tambah_item
 from F06 import hapusitem
 from F08 import pinjam_gadget
 from F09 import kembalikan_gadget
