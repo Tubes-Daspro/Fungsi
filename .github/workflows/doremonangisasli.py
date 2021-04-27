@@ -111,7 +111,13 @@ if role == "Admin":
         elif jawab == "9" :
             lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data_user)
         elif jawab == "10" :
-            simpan()
+            x = input("Apakah anda yakin akan menyimpan perubahan?(Y/N) ")
+            if x =="Y" or x == "y":    
+                simpan()
+            elif x == "N" or x == "n":
+                print("Perubahan tidak jadi disimpan.\n")
+            else :
+                print("Input tidak valid!\n")
         elif jawab == "11" :
             while True:
                 help_admin()
@@ -166,7 +172,13 @@ elif role == "User":
         elif jawab == "5" :
             (data_consumable, data_consumable_history) = minta_consumable(data_consumable,data_consumable_history,id_user)
         elif jawab == "6" :
-            simpan()
+            x = input("Apakah anda yakin akan menyimpan perubahan?(Y/N) ")
+            if x =="Y" or x == "y":    
+                simpan()
+            elif x == "N" or x == "n":
+                print("Perubahan tidak jadi disimpan.\n")
+            else :
+                print("Input tidak valid!\n")
         elif jawab == "7" :
             while True:
                 help_user()
