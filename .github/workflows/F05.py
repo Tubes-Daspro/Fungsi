@@ -1,6 +1,5 @@
 def tambah_item(array_data1, array_data2):
     count = 0
-    check_count = 0
     array_checker = [0 for i in range (10)]
     for i in range (10):
         array_checker[i] = str(i)
