@@ -26,16 +26,16 @@ def caritahun(gadget):
             for i in range(len(gadget)):
                 for j in range(len(gadget[i])):
                     if j == 5 and Kateg == ">": # Pengelompokkan gadget berdasarkan spesifikasi yang diinput.
-                        if Thn > int(gadget[i][j]):
-                            HasilPencarian.append(gadget[i])
-                    elif j == 5 and Kateg == "<":
                         if Thn < int(gadget[i][j]):
                             HasilPencarian.append(gadget[i])
+                    elif j == 5 and Kateg == "<":
+                        if Thn > int(gadget[i][j]):
+                            HasilPencarian.append(gadget[i])
                     elif j == 5 and Kateg == ">=":
-                        if Thn >= int(gadget[i][j]):
+                        if Thn <= int(gadget[i][j]):
                             HasilPencarian.append(gadget[i])
                     elif j == 5 and Kateg == "<=":
-                        if Thn <= int(gadget[i][j]):
+                        if Thn >= int(gadget[i][j]):
                             HasilPencarian.append(gadget[i])
                     elif j == 5 and Kateg == "=":
                         if Thn == int(gadget[i][j]):
