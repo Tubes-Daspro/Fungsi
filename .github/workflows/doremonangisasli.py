@@ -17,6 +17,7 @@ from F12 import lihat_riwayat_kembali_gadget
 from F13 import lihat_riwayat_ambil_consumable
 from F14 import load
 from F15 import simpan
+from F16 import help_awal, help_admin, help_user
 
 
 # Loading data
