@@ -43,4 +43,5 @@ def register(data_user):
     data_baru[4] = input("Masukkan password : ")
     data_baru[5] = "User"
     data_user.append(data_baru)
+    print("Akun ", data_baru[1], " berhasil didaftarkan.")
     return
