@@ -22,7 +22,7 @@
 #         print("Username yang anda masukkan tidak terdaftar di sistem kami.")
 #     return right_username
 
-def Login(user):
+def login(user):
     username = input("Masukkan username: ")
     password = input("Masukkan password: ")
     status_login = False
