@@ -59,16 +59,28 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
         if data_gadget_borrow_history[index_borrow_history][1] == id_user:
             skip_data = False
             data_found_in_return = False
-            for index_return_history in range(len(data_gadget_return_history)-1, -1, -1):
-                if data_gadget_borrow_history[index_borrow_history][0] == data_gadget_return_history[index_return_history][1] and data_gadget_return_history[index_return_history][4] > 0:
-                    jumlah_gadget = data_gadget_return_history[index_return_history][4]
-                    data_found_in_return = True
-                elif data_gadget_borrow_history[index_borrow_history][0] == data_gadget_return_history[index_return_history][1] and data_gadget_return_history[index_return_history][4] == 0:
-                    skip_data = True
+            index_return_history = len(data_gadget_return_history) - 1
+
+            while (index_return_history >= 0):
+                if data_gadget_borrow_history[index_borrow_history][0] == data_gadget_return_history[index_return_history][1]:
+                    if data_gadget_return_history[index_return_history][4] > 0:
+                        # Entry sudah dikembalikan, tapi baru sebagian
+                        jumlah_gadget = data_gadget_return_history[index_return_history][4]
+                        data_found_in_return = True
+                        break
+                    else:
+                        # Entry sudah dikembalikan seluruhnya
+                        skip_data = True
+                        break
+                index_return_history -= 1
+
             if not(data_found_in_return):
+                # Entry belum dikembalikan sama sekali
                 jumlah_gadget = data_gadget_borrow_history[index_borrow_history][4]
+
             id_gadget = data_gadget_borrow_history[index_borrow_history][2]
             id_peminjaman = data_gadget_borrow_history[index_borrow_history][0]
+
             # Pencarian nama gadget
             nama_gadget_found = False
             for index_gadget in range(len(data_gadget)):
@@ -77,6 +89,8 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
                     nama_gadget_found = True
             if not(nama_gadget_found):
                 nama_gadget = "Informasi telah dihapus, namun gadget masih bisa dikembalikan."
+
+            # Penambahan data ke user_gadget_borrow_history
             if not(skip_data):
                 user_gadget_borrow_history.append([id_gadget,nama_gadget,id_peminjaman,jumlah_gadget])
 
@@ -124,14 +138,13 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
             if ord(input_jumlah_gadget_kembali[i]) < 48 or ord(input_jumlah_gadget_kembali[i]) > 57:
                 is_valid = False
 
-    jumlah_gadget_kembali = int(input_jumlah_gadget_kembali)
-
     if not(is_valid) and is_operating:
         is_operating = False
         exit_code = 3
 
     # Validasi jumlah pengembalian tidak lebih dari jumlah gadget yang dipinjam
     if is_valid and exit_code == 0:
+        jumlah_gadget_kembali = int(input_jumlah_gadget_kembali)
         if jumlah_gadget_kembali > user_gadget_borrow_history[index_user_borrow_history][3]:
             is_valid = False
 
@@ -162,6 +175,8 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
             index_gadget += 1
             if data_gadget[index_gadget][0] == user_gadget_borrow_history[index_user_borrow_history][0]:
                 data_gadget[index_gadget][3] += jumlah_gadget_kembali
+                gadget_found = True
+                break
 
         if not(gadget_found):
             data_gadget[index_gadget] = ["", "", "", "", "", ""]
@@ -235,4 +250,3 @@ def is_date_valid(tanggal):
             return False
     else:
         return False
-
