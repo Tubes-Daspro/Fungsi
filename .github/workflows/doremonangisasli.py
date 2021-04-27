@@ -56,7 +56,7 @@ while True:
     elif jawaban == "2":
         while True:
             help_awal()
-            x = input("Mengerti?(Y/N)")
+            x = input("Mengerti?(Y/N) ")
             if x == "Y" or x == "y":
                 break
             elif x == "N" or x == "n":
@@ -115,7 +115,7 @@ if role == "Admin":
         elif jawab == "11" :
             while True:
                 help_admin()
-                x = input("Mengerti?(Y/N)")
+                x = input("Mengerti?(Y/N) ")
                 if x == "Y" or x == "y":
                     break
                 elif x == "N" or x == "n":
@@ -170,7 +170,7 @@ elif role == "User":
         elif jawab == "7" :
             while True:
                 help_user()
-                x = input("Mengerti?(Y/N)")
+                x = input("Mengerti?(Y/N) ")
                 if x == "Y" or x == "y":
                     break
                 elif x == "N" or x == "n":
