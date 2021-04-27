@@ -154,7 +154,7 @@ elif role == "User":
         print("8. Exit")
         print()
 
-        jawab = input("Silahkan pilih: ")
+        jawab = input("Silahkan pilih (1 - 8): ")
         if jawab == "1" :
             carirarity(data_gadget)
         elif jawab == "2" :
