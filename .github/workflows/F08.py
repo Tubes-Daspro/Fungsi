@@ -74,6 +74,7 @@ def pinjam_gadget(data_gadget, data_gadget_borrow_history, data_gadget_return_hi
                     else:
                         is_valid = False
                         break
+                index_pengembalian -= 1
             if not(index_pengembalian_found):
                 is_valid = False
 
