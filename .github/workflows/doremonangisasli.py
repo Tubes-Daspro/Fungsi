@@ -1,4 +1,4 @@
-from LoadSave import *
+
 import argparse
 from os import system, name, path
 
@@ -15,6 +15,8 @@ from F10 import minta_consumable
 from F11 import lihat_riwayat_pinjam_gadget
 from F12 import lihat_riwayat_kembali_gadget
 from F13 import lihat_riwayat_ambil_consumable
+from F14 import load
+from F15 import simpan
 
 
 # Loading data
