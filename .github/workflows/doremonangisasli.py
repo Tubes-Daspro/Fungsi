@@ -6,6 +6,7 @@ from F03 import carirarity
 from F04 import caritahun
 from F05 import tambah_item
 from F06 import hapusitem
+from F07 import ubah_Jumlah
 from F08 import pinjam_gadget
 from F09 import kembalikan_gadget
 from F10 import minta_consumable
@@ -90,7 +91,7 @@ if role == "Admin":
         elif jawab == "3" :
             caritahun(data_gadget)
         elif jawab == "4" :
-            print("BELUM AKTIF")
+            print(tambah_item)
         elif jawab == "5" :
             hapusitem(data_gadget,data_consumable)
         elif jawab == "6" :
