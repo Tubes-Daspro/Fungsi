@@ -2,6 +2,8 @@ from LoadSave import *
 import argparse
 from os import system, name, path
 
+from F01 import register
+from F02 import login
 from F03 import carirarity
 from F04 import caritahun
 from F05 import tambah_item
@@ -42,7 +44,7 @@ while True:
     jawaban = input("Silahkan pilih: ")
 
     if jawaban == "1":
-        role, status_login, id_user = Login(data_user)
+        role, status_login, id_user = login(data_user)
         if status_login :
             break
     elif jawaban == "2":
