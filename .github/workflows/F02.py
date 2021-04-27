@@ -1,4 +1,4 @@
-def Login(user):
+def login(user):
     username = input("Masukkan username: ")
     password = input("Masukkan password: ")
     find = False
