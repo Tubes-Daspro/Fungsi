@@ -114,6 +114,7 @@ if role == "Admin":
             x = input("Apakah anda yakin akan menyimpan perubahan?(Y/N) ")
             if x =="Y" or x == "y":    
                 simpan()
+                print("Perubahan berhasil disimpan.\n")
             elif x == "N" or x == "n":
                 print("Perubahan tidak jadi disimpan.\n")
             else :
@@ -175,6 +176,7 @@ elif role == "User":
             x = input("Apakah anda yakin akan menyimpan perubahan?(Y/N) ")
             if x =="Y" or x == "y":    
                 simpan()
+                print("Perubahan berhasil disimpan.\n")
             elif x == "N" or x == "n":
                 print("Perubahan tidak jadi disimpan.\n")
             else :
