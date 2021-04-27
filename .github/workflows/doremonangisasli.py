@@ -93,7 +93,7 @@ if role == "Admin":
         elif jawab == "3" :
             caritahun(data_gadget)
         elif jawab == "4" :
-            print(tambah_item)
+            tambah_item(data_gadget, data_consumable)
         elif jawab == "5" :
             hapusitem(data_gadget,data_consumable)
         elif jawab == "6" :
