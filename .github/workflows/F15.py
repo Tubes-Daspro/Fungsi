@@ -1,3 +1,5 @@
+from os import system, name, path, makedirs
+
 #SAVE
 def ubah_ke_string(data, header, pemisah):
     data_baru = pemisah.join(header) + "\n"
