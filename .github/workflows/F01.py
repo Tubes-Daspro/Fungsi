@@ -41,13 +41,14 @@ def register(data_user):
             break
     data_baru[3] = input("Masukkan alamat : ")
     data_baru[4] = input("Masukkan password : ")
+    data_baru[4] = hash_pass(data_baru[4])
     data_baru[5] = "User"
     data_user.append(data_baru)
     print("Akun", data_baru[1], "berhasil didaftarkan.")
     return
 
 #Fungsi FB01
-#Menukar password yang ada untuk di hashing
+#Menukar password yang ada untuk di hashing, berlaku satu arah kemudian diappend ke dalam fungsi yang ada
 
 def hash_pass(user_password):
     convert_password = hash(user_password)
