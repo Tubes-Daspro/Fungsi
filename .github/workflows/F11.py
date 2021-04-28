@@ -33,7 +33,7 @@ def lihat_riwayat_pinjam_gadget(data_gadget_borrow_history,data_gadget,data_user
 
     # ALGORITMA
     # Pembuatan list index dan tanggal
-    list_index_tanggal = [0]*len(data_gadget_borrow_history)
+    list_index_tanggal = [0 for i in range(len(data_gadget_borrow_history))]
     for i in range(len(data_gadget_borrow_history)):
         dd = int(data_gadget_borrow_history[i][3][0] + data_gadget_borrow_history[i][3][1])
         mm = int(data_gadget_borrow_history[i][3][3] + data_gadget_borrow_history[i][3][4])
@@ -144,4 +144,5 @@ def is_more_recent(d1,d2):
                 result = False
     
     return result
+            
             
