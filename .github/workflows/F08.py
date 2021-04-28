@@ -13,11 +13,13 @@ def pinjam_gadget(data_gadget, data_gadget_borrow_history, data_gadget_return_hi
     # jumlah_peminjaman : integer    (input jumlah peminjaman yang diubah tipenya menjadi integer)
 
     # id_peminjaman : string    (id peminjaman yang akan menjadi data dalam data_gadget_borrow_history)
-    # id_peminjaman terakhir : string    (id peminjaman terakhir terhadap gadget yang sama sebelum peminjaman ini)
+    # id_peminjaman_terakhir : string    (id peminjaman terakhir terhadap gadget yang sama sebelum peminjaman ini)
     # index_item : integer    (counter untuk iterasi array data_gadget)
     # index_peminjaman : integer    (counter untuk iterasi data_gadget_borrow_history)
     # index_pengembalian : integer    (counter untuk iterasi data_gadget_return_history)
     # i : integer    (counter untuk iterasi)
+    # id_peminjaman_terakhir_found : boolean    (menyatakan apakah ada entry peminjaman item yang sama sebelumnya)
+    # index_pengembalian_found : boolean    (menyatakan apakah ada entry pengembalian item dengan id_peminjaman_terakhir)
 
     # is_valid : boolean    (menyatakan apakah input yang dimasukkan oleh user valid)
     # is_operating : boolean    (menyatakan apakah program masih perlu berjalan)
@@ -41,7 +43,6 @@ def pinjam_gadget(data_gadget, data_gadget_borrow_history, data_gadget_return_hi
     while index_item < len(data_gadget) and not(is_valid):
         if data_gadget[index_item][0] == id_item:
             is_valid = True
-            break
         else:
             index_item += 1
 
@@ -55,25 +56,23 @@ def pinjam_gadget(data_gadget, data_gadget_borrow_history, data_gadget_return_hi
         # Pengecekan pernah adanya peminjaman oleh user terhadap gadget yang dipilih
         index_peminjaman = len(data_gadget_borrow_history) - 1 
         id_peminjaman_terakhir = ''
-        while index_peminjaman >= 0:
+        id_peminjaman_terakhir_found = False
+        while index_peminjaman >= 0 and not(id_peminjaman_terakhir_found):
             if data_gadget_borrow_history[index_peminjaman][1] == id_user and data_gadget_borrow_history[index_peminjaman][2] == id_item:
+                id_peminjaman_terakhir_found = True
                 id_peminjaman_terakhir = data_gadget_borrow_history[index_peminjaman][0]
-                break
             else:
                 index_peminjaman -= 1
 
         # Bila pernah meminjam gadget yang dipilih, dilakukan pengecekan apakah gadget telah dikembalikan sepenuhnya
-        if id_peminjaman_terakhir != '':
+        if id_peminjaman_terakhir_found:
             index_pengembalian_found = False
             index_pengembalian = len(data_gadget_return_history) - 1
-            while index_pengembalian >= 0:
+            while index_pengembalian >= 0 and not(index_pengembalian_found):
                 if data_gadget_return_history[index_pengembalian][1] == id_peminjaman_terakhir:
                     index_pengembalian_found = True
-                    if data_gadget_return_history[index_pengembalian][4] == 0:
-                        break
-                    else:
+                    if data_gadget_return_history[index_pengembalian][4] != 0:
                         is_valid = False
-                        break
                 index_pengembalian -= 1
             if not(index_pengembalian_found):
                 is_valid = False
@@ -166,7 +165,6 @@ def is_date_valid(tanggal):
                 return False
         else:
             if ord(tanggal[i]) < 48 and ord(tanggal[i]) > 57:
-                print(ord(tanggal[i]))
                 return False
 
     # Pengecekan kevalidan nilai tanggal
