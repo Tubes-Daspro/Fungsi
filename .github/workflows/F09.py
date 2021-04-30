@@ -2,7 +2,7 @@
 
 def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_history,id_user):
     # Mengembalikan data gadget dan data riwayat pengembalian gadget yang telah dimodifikasi
-    # Return type : (array of array of string, array of array of string)
+    # Return type : (array of [string, string, string, integer, char, integer], array of [string, string, string, integer, integer])
 
     # KAMUS LOKAL
 
@@ -61,7 +61,7 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
             data_found_in_return = False
             index_return_history = len(data_gadget_return_history) - 1
 
-            while (index_return_history >= 0):
+            while (index_return_history >= 0 and data_found_in_return == False and skip_data == False):
                 if data_gadget_borrow_history[index_borrow_history][0] == data_gadget_return_history[index_return_history][1]:
                     if data_gadget_return_history[index_return_history][4] > 0:
                         # Entry sudah dikembalikan, tapi baru sebagian
@@ -99,14 +99,13 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
         is_operating = False
         exit_code = 1
 
-    if exit_code == 0:
-        print("== DAFTAR ITEM YANG BISA DIKEMBALIKAN ==")
+    if is_operating:
         # Menampilkan pilihan gadget yang dapat dikembalikan
+        print("== DAFTAR ITEM YANG BISA DIKEMBALIKAN ==")
         for i in range(len(user_gadget_borrow_history)):
             print(str(i+1) + ". " + user_gadget_borrow_history[i][1] + " (x" + str(user_gadget_borrow_history[i][3]) + ")")
     
-    if is_operating:
-        # Input ID gadget yang ingin dikembalikan
+        # Input nomor gadget yang ingin dikembalikan
         input_index_user_borrow_history = input("Masukkan nomor gadget yang ingin dikembalikan (1 - " + str(len(user_gadget_borrow_history)) + ") : ")
     
         # Validasi input nomor gadget
@@ -130,7 +129,7 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
 
 
     # Input jumlah gadget bersangkutan yang ingin dikembalikan
-    if is_valid and exit_code == 0:
+    if is_valid and is_operating:
         input_jumlah_gadget_kembali = input("Jumlah gadget yang ingin dikembalikan: ")
 
         # Validasi input jumlah gadget bersangkutan yang ingin dikembalikan
@@ -143,7 +142,7 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
         exit_code = 3
 
     # Validasi jumlah pengembalian tidak lebih dari jumlah gadget yang dipinjam
-    if is_valid and exit_code == 0:
+    if is_valid and is_operating:
         jumlah_gadget_kembali = int(input_jumlah_gadget_kembali)
         if jumlah_gadget_kembali > user_gadget_borrow_history[index_user_borrow_history][3]:
             is_valid = False
@@ -152,9 +151,9 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
         is_operating = False
         exit_code = 4
 
-    if is_valid and exit_code == 0:
+    if is_valid and is_operating:
         # Input tanggal pengembalian
-        tanggal_pengembalian = input("Tanggal pengembalian: ")
+        tanggal_pengembalian = input("Tanggal pengembalian (DD/MM/YYYY): ")
 
         # Validasi input tanggal peminjaman
         is_valid = is_date_valid(tanggal_pengembalian)
@@ -163,7 +162,7 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
         is_operating = False
         exit_code = 5
 
-    if is_valid and exit_code == 0:
+    if is_valid and is_operating:
         # Penentuan atribut sisa pengembalian
         sisa_pengembalian = user_gadget_borrow_history[index_user_borrow_history][3] - jumlah_gadget_kembali
 
@@ -171,16 +170,11 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
         # Modifikasi atribut pada data gadget
         gadget_found = False
         index_gadget = -1
-        while index_gadget < len(data_gadget)-1:
+        while (index_gadget < len(data_gadget)-1 and not(gadget_found)):
             index_gadget += 1
             if data_gadget[index_gadget][0] == user_gadget_borrow_history[index_user_borrow_history][0]:
                 data_gadget[index_gadget][3] += jumlah_gadget_kembali
                 gadget_found = True
-                break
-
-        if not(gadget_found):
-            data_gadget[index_gadget] = ["", "", "", "", "", ""]
-
 
         # Penambahan data riwayat pengembalian gadget
         id_pengembalian = "GRH" + str(len(data_gadget_return_history) + 1)
@@ -225,7 +219,6 @@ def is_date_valid(tanggal):
                 return False
         else:
             if ord(tanggal[i]) < 48 and ord(tanggal[i]) > 57:
-                print(ord(tanggal[i]))
                 return False
 
     # Pengecekan kevalidan nilai tanggal
@@ -250,3 +243,5 @@ def is_date_valid(tanggal):
             return False
     else:
         return False
+
+
