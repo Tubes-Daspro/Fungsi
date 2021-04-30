@@ -2,8 +2,7 @@
 
 def minta_consumable(data_consumable,data_consumable_history,id_user):
     # Mengembalikan data consumable dan data riwayat permintaan consumable yang telah dimodifikasi
-    # Mengembalikan data gadget dan data riwayat peminjaman gadget yang telah dimodifikasi
-    # Return type : (array of string, array of string)
+    # Return type : (array of [string, string, string, integer, char], array of [string, string, string, string, integer])
     
     # KAMUS LOKAL
 
@@ -45,9 +44,9 @@ def minta_consumable(data_consumable,data_consumable_history,id_user):
         is_operating = False
         exit_code = 1
 
+    # Input tanggal permintaan
     if is_valid:
-        # Input tanggal pengambilan
-        tanggal_permintaan = input("Tanggal permintaan: ")
+        tanggal_permintaan = input("Tanggal permintaan (DD/MM/YYYY): ")
 
         # Validasi input tanggal permintaan
         is_valid = is_date_valid(tanggal_permintaan)
@@ -56,13 +55,13 @@ def minta_consumable(data_consumable,data_consumable_history,id_user):
         is_operating = False
         exit_code = 2
 
+    # Input jumlah permintaan
     if is_valid:
-        # Input jumlah permintaan
         input_jumlah_permintaan = input("Jumlah permintaan: ")
 
         # Validasi input jumlah permintaan
 
-        # Validasi jumlah pengembalian merupakan bilangan bulat positif
+        # Validasi jumlah permintaan merupakan bilangan bulat positif
         for i in range(len(input_jumlah_permintaan)):
             if ord(input_jumlah_permintaan[i]) < 48 or ord(input_jumlah_permintaan[i]) > 57:
                 is_valid = False
@@ -126,7 +125,6 @@ def is_date_valid(tanggal):
                 return False
         else:
             if ord(tanggal[i]) < 48 and ord(tanggal[i]) > 57:
-                print(ord(tanggal[i]))
                 return False
 
     # Pengecekan kevalidan nilai tanggal
