@@ -1,7 +1,11 @@
 # F12 Melihat Riwayat Pengembalian Gadget
+
 def lihat_riwayat_kembali_gadget(data_gadget_return_history,data_gadget_borrow_history,data_gadget,data_user):
-    # I.S. data_gadget_return_history terdefinisi
-    # F.S. sampai dengan 5 data riwayat peminjaman gadget terbaru ditampilkan
+    # I.S. data_gadget, data_gadget_borrow_history, data_gadget_return_history, dan data_user terdefinisi 
+    # F.S. Ditampilkan 5 buah data ID pengembalian gadget, nama pengambil, nama gadget, tanggal peminjaman, dan jumlah pengembalian jika memungkinkan.  
+    # Data yang ditampilkan terurut secara descending berdasarkan tanggal pengembalian. 
+    # User diberikan opsi untuk menampilkan 5 buah data lagi jika memungkinkan. }
+
 
     # KAMUS LOKAL
 
@@ -33,14 +37,14 @@ def lihat_riwayat_kembali_gadget(data_gadget_return_history,data_gadget_borrow_h
 
     # ALGORITMA
         # Pembuatan list index dan tanggal
-    list_index_tanggal = [0]*len(data_gadget_return_history)
+    list_index_tanggal = [0 for i in range(len(data_gadget_borrow_history))]
     for i in range(len(data_gadget_return_history)):
         dd = int(data_gadget_return_history[i][2][0] + data_gadget_return_history[i][2][1])
         mm = int(data_gadget_return_history[i][2][3] + data_gadget_return_history[i][2][4])
         yyyy = int(data_gadget_return_history[i][2][6] + data_gadget_return_history[i][2][7] + data_gadget_return_history[i][2][8] + data_gadget_return_history[i][2][9])
         list_index_tanggal[i] = [i,dd,mm,yyyy]
 
-    # Sorting berdasarkan tanggal secara descending
+    # Sorting berdasarkan tanggal secara descending ( bubble sort )
     if len(list_index_tanggal) > 1:
         index_sorted = 0
         is_sorted = False
@@ -69,6 +73,7 @@ def lihat_riwayat_kembali_gadget(data_gadget_return_history,data_gadget_borrow_h
 
     is_continue = True
     if len(list_index_tanggal) > 0:
+        print("=====Riwayat Pengembalian Gadget=====\n")
         while batas_atas <= len(list_index_tanggal) and is_continue:
             for i in range(batas_bawah, batas_atas):
                 # Pencarian data_gadget_borrow_history yang sesuai
@@ -93,6 +98,7 @@ def lihat_riwayat_kembali_gadget(data_gadget_return_history,data_gadget_borrow_h
                 if not(nama_gadget_found):
                     nama_gadget = "Informasi telah dihapus."
 
+                # Output
                 print("ID Pengembalian      : " + data_gadget_return_history[list_index_tanggal[i][0]][0])
                 print("Nama Pengambil       : " + nama_pengambil)
                 print("Nama Gadget          : " + nama_gadget)
@@ -100,6 +106,7 @@ def lihat_riwayat_kembali_gadget(data_gadget_return_history,data_gadget_borrow_h
                 print("Jumlah Pengembalian  : " + str(data_gadget_return_history[list_index_tanggal[i][0]][3]))
                 print()
 
+            # Opsi menampilkan lebih banyak data
             if batas_atas < len(list_index_tanggal):
                 user_input = input("Apakah anda ingin menampilkan entry tambahan lagi? (Y/N) : ")
                 if user_input == 'N':
