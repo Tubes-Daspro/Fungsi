@@ -1,8 +1,11 @@
 # F11 Melihat Riwayat Peminjaman Gadget
         
 def lihat_riwayat_pinjam_gadget(data_gadget_borrow_history,data_gadget,data_user):
-    # I.S. data_gadget_borrow_history terdefinisi
-    # F.S. sampai dengan 5 data riwayat peminjaman gadget terbaru ditampilkan
+    # I.S. data_gadget_borrow_history, data_gadget, dan data_user terdefinisi 
+    # F.S. Ditampilkan 5 buah data ID peminjaman gadget, nama pengambil, nama gadget, tanggal peminjaman, dan jumlah peminjaman jika memungkinkan.  
+    # Data yang ditampilkan terurut secara descending berdasarkan tanggal peminjaman. 
+    # User diberikan opsi untuk menampilkan 5 buah data lagi jika memungkinkan. 
+
 
     # KAMUS LOKAL
 
@@ -40,7 +43,7 @@ def lihat_riwayat_pinjam_gadget(data_gadget_borrow_history,data_gadget,data_user
         yyyy = int(data_gadget_borrow_history[i][3][6] + data_gadget_borrow_history[i][3][7] + data_gadget_borrow_history[i][3][8] + data_gadget_borrow_history[i][3][9])
         list_index_tanggal[i] = [i,dd,mm,yyyy]
 
-    # Sorting berdasarkan tanggal secara descending
+    # Sorting berdasarkan tanggal secara descending ( bubble sort )
     if len(list_index_tanggal) > 1:
         index_sorted = 0
         is_sorted = False
@@ -69,6 +72,7 @@ def lihat_riwayat_pinjam_gadget(data_gadget_borrow_history,data_gadget,data_user
 
     is_continue = True
     if len(list_index_tanggal) > 0:
+        print("=====Riwayat Peminjaman Gadget=====\n")
         while batas_atas <= len(list_index_tanggal) and is_continue:
             for i in range(batas_bawah, batas_atas):
                 
@@ -88,6 +92,7 @@ def lihat_riwayat_pinjam_gadget(data_gadget_borrow_history,data_gadget,data_user
                 if not(nama_gadget_found):
                     nama_gadget = "Informasi telah dihapus."
 
+                # Output
                 print("ID Peminjaman      : " + data_gadget_borrow_history[list_index_tanggal[i][0]][0])
                 print("Nama Pengambil     : " + nama_pengambil)
                 print("Nama Gadget        : " + nama_gadget)
@@ -95,6 +100,7 @@ def lihat_riwayat_pinjam_gadget(data_gadget_borrow_history,data_gadget,data_user
                 print("Jumlah             : " + str(data_gadget_borrow_history[list_index_tanggal[i][0]][4]))
                 print()
 
+            # Opsi menampilkan lebih banyak data
             if batas_atas < len(list_index_tanggal):
                 user_input = input("Apakah anda ingin menampilkan entry tambahan lagi? (Y/N) : ")
                 if user_input == 'N':
@@ -144,5 +150,4 @@ def is_more_recent(d1,d2):
                 result = False
     
     return result
-            
             
