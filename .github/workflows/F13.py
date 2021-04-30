@@ -1,7 +1,11 @@
 # F13 Melihat Riwayat Peminjaman Consumable
+
 def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data_user):
-    # I.S. data_consumable_history terdefinisi
-    # F.S. sampai dengan 5 data riwayat consumable gadget terbaru ditampilkan
+    # I.S. data_consumable, data_consumable_history, dan data_user terdefinisi 
+    # F.S. Ditampilkan 5 buah data ID pengambilan consumable, nama pengambil, nama consumable, tanggal pengambilan, dan jumlah pengambilan jika memungkinkan.  
+    # Data yang ditampilkan terurut secara descending berdasarkan tanggal pengembalian. 
+    # User diberikan opsi untuk menampilkan 5 buah data lagi jika memungkinkan. 
+
     
     # KAMUS LOKAL
 
@@ -32,14 +36,14 @@ def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data
 
     # ALGORITMA
     # Pembuatan list index dan tanggal
-    list_index_tanggal = [0]*len(data_consumable_history)
+    list_index_tanggal = [0 for i in range(len(data_gadget_borrow_history))]
     for i in range(len(data_consumable_history)):
         dd = int(data_consumable_history[i][3][0] + data_consumable_history[i][3][1])
         mm = int(data_consumable_history[i][3][3] + data_consumable_history[i][3][4])
         yyyy = int(data_consumable_history[i][3][6] + data_consumable_history[i][3][7] + data_consumable_history[i][3][8] + data_consumable_history[i][3][9])
         list_index_tanggal[i] = [i,dd,mm,yyyy]
 
-    # Sorting berdasarkan tanggal secara descending
+    # Sorting berdasarkan tanggal secara descending (bubble sort)
     if len(list_index_tanggal) > 1:
         index_sorted = 0
         is_sorted = False
@@ -67,6 +71,7 @@ def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data
         batas_atas = 5
 
     if len(list_index_tanggal) > 0:
+        print("=====Riwayat Permintaan Consumable=====\n")
         is_continue = True
         while batas_atas <= len(list_index_tanggal) and is_continue:
             for i in range(batas_bawah, batas_atas):
@@ -77,7 +82,7 @@ def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data
                     if data_consumable_history[i][1] == data_user[index_user][0]:
                         nama_pengambil = data_user[index_user][2]
 
-                # Pencarian nama gadget
+                # Pencarian nama consumable
                 nama_consumable = ''
                 nama_consumable_found = False
                 for index_consumable in range(len(data_consumable)):
@@ -86,8 +91,8 @@ def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data
                         nama_consumable_found = True
                 if not(nama_consumable_found):
                     nama_consumable = "Informasi telah dihapus."
-                    user_gadget_borrow_history.append([id_gadget,nama_consumable,id_peminjaman,jumlah_gadget])
 
+                # Output
                 print("ID Pengambilan      : " + data_consumable_history[list_index_tanggal[i][0]][0])
                 print("Nama Pengambil      : " + nama_pengambil)
                 print("Nama Consumable     : " + nama_consumable)
@@ -95,6 +100,7 @@ def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data
                 print("Jumlah              : " + str(data_consumable_history[list_index_tanggal[i][0]][4]))
                 print()
 
+            # Opsi menampilkan lebih banyak data
             if batas_atas < len(list_index_tanggal):
                 user_input = input("Apakah anda ingin menampilkan entry tambahan lagi? (Y/N) : ")
                 if user_input == 'N':
@@ -138,4 +144,3 @@ def is_more_recent(d1,d2):
                 result = False
     
     return result
-            
