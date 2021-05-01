@@ -34,7 +34,7 @@ def login(user):
             status_login = True
             break
     if (status_login == True):
-        password = hash_pass(password)
+        #password = hash_pass(password)
         if password == user[indeks][4]:
             role = user[indeks][5]
             id_user = user[indeks][0]
@@ -47,18 +47,18 @@ def login(user):
     return (role, status_login, id_user)
 
 #Fungsi FB01 untuk keperluan Hashing password yang diinput user
-def hash_pass(user_password):
-    convert_password = hash(user_password)
-    another_code = "gzA1bvGf"
-    encode = (convert_password/1275) - 5766
-    encode2 = hash(another_code)
-    password = round(encode + encode2)
-    while(password > 10**19 or password < 10**18):
-        if(password < 10**18):
-            validating_int = 3.67*(10**18)
-            password += 3.67*(10**18)
-            password = password/4
-            password = round(password)
-        else:
-            password -= 6.43*(10**18)
-    return password
+#def hash_pass(user_password):
+#   convert_password = hash(user_password)
+    #another_code = "gzA1bvGf"
+    #encode = (convert_password/1275) - 5766
+    #encode2 = hash(another_code)
+    #password = round(encode + encode2)
+    #while(password > 10**19 or password < 10**18):
+        #if(password < 10**18):
+            #validating_int = 3.67*(10**18)
+            #password += 3.67*(10**18)
+            #password = password/4
+            #password = round(password)
+        #else:
+            #password -= 6.43*(10**18)
+    #return password
