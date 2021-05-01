@@ -23,6 +23,8 @@
 #     return right_username
 
 def login(user):
+    role = 0
+    id_user = 0
     username = input("Masukkan username: ")
     password = input("Masukkan password: ")
     status_login = False
