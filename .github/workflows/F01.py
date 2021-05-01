@@ -41,7 +41,7 @@ def register(data_user):
             break
     data_baru[3] = input("Masukkan alamat : ")
     data_baru[4] = input("Masukkan password : ")
-    data_baru[4] = hash_pass(data_baru[4])
+    #data_baru[4] = hash_pass(data_baru[4])
     data_baru[5] = "User"
     data_user.append(data_baru)
     print("Akun", data_baru[1], "berhasil didaftarkan.")
@@ -50,18 +50,18 @@ def register(data_user):
 #Fungsi FB01
 #Menukar password yang ada untuk di hashing, berlaku satu arah kemudian diappend ke dalam fungsi yang ada
 
-def hash_pass(user_password):
-    convert_password = hash(user_password)
-    another_code = "gzA1bvGf"
-    encode = (convert_password/1275) - 5766
-    encode2 = hash(another_code)
-    password = round(encode + encode2)
-    while(password > 10**19 or password < 10**18):
-        if(password < 10**18):
-            validating_int = 3.67*(10**18)
-            password += 3.67*(10**18)
-            password = password/4
-            password = round(password)
-        else:
-            password -= 6.43*(10**18)
-    return password
+#def hash_pass(user_password):
+    #convert_password = hash(user_password)
+    #another_code = "gzA1bvGf"
+    #encode = (convert_password/1275) - 5766
+    #encode2 = hash(another_code)
+    #password = round(encode + encode2)
+    #while(password > 10**19 or password < 10**18):
+        #if(password < 10**18):
+            #validating_int = 3.67*(10**18)
+            #password += 3.67*(10**18)
+            #password = password/4
+            #password = round(password)
+        #else:
+            #password -= 6.43*(10**18)
+    #return password
