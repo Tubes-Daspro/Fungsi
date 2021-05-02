@@ -29,8 +29,8 @@ def register(data_user):
     data_baru[0] = str(len(data_user)+1)
     nama = input("Masukkan nama : ")
     data_baru[2] = nama.title()
-    unik = True
     while True :
+        unik = True
         data_baru[1] = input("Masukkan username : ")
         for i in range(len(data_user)):
             if data_baru[1] == data_user[i][1]:
