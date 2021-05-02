@@ -110,7 +110,7 @@ def pinjam_gadget(data_gadget, data_gadget_borrow_history, data_gadget_return_hi
     if is_valid:
         # Validasi jumlah peminjaman tidak melebihi stock yang ada
         jumlah_peminjaman = int(input_jumlah_peminjaman)
-        if jumlah_peminjaman > data_gadget[index_item][3]:
+        if jumlah_peminjaman > data_gadget[index_item][3] or jumlah_peminjaman <= 0:
             is_valid = False
 
     if not(is_valid) and is_operating:
@@ -138,7 +138,7 @@ def pinjam_gadget(data_gadget, data_gadget_borrow_history, data_gadget_return_hi
     elif exit_code == 4:
         print("Input tidak valid! Jumlah peminjaman harus dalam bilangan bulat positif\n")
     elif exit_code == 5:
-        print("Input tidak valid! Jumlah peminjaman gadget melebihi stock gadget!\n")
+        print("Input tidak valid! Jumlah peminjaman gadget tidak sesuai stock gadget!\n")
 
     return (data_gadget,data_gadget_borrow_history)
 
@@ -189,3 +189,4 @@ def is_date_valid(tanggal):
             return False
     else:
         return False
+
