@@ -37,7 +37,7 @@ def lihat_riwayat_kembali_gadget(data_gadget_return_history,data_gadget_borrow_h
 
     # ALGORITMA
         # Pembuatan list index dan tanggal
-    list_index_tanggal = [0 for i in range(len(data_gadget_borrow_history))]
+    list_index_tanggal = [0 for i in range(len(data_gadget_return_history))]
     for i in range(len(data_gadget_return_history)):
         dd = int(data_gadget_return_history[i][2][0] + data_gadget_return_history[i][2][1])
         mm = int(data_gadget_return_history[i][2][3] + data_gadget_return_history[i][2][4])
