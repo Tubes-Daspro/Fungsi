@@ -39,11 +39,12 @@ def register(data_user):
                 break 
         if unik:
             break
-    data_baru[3] = input("Masukkan alamat : ")
-    data_baru[4] = input("Masukkan password : ")
-    #data_baru[4] = hash_pass(data_baru[4])
-    data_baru[5] = "User"
-    data_user.append(data_baru)
+    if(unik):
+        data_baru[3] = input("Masukkan alamat : ")
+        data_baru[4] = input("Masukkan password : ")
+        #data_baru[4] = hash_pass(data_baru[4])
+        data_baru[5] = "User"
+        data_user.append(data_baru)
     print("Akun", data_baru[1], "berhasil didaftarkan.")
     return
 
