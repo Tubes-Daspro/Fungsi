@@ -52,7 +52,7 @@ id_user = 0
 
 while True:
     print()
-    print("============Doraemonangis Mystic Pouch of Pien=============")
+    print("============Doremonangis Pouch of Pien=============")
     print()
     print("1. Login")
     print("2. Help")
@@ -85,8 +85,8 @@ while True:
 if role == "Admin":
     while True:
         print()
-        print("============Doraemonangis Mystic Pouch of Pien=============")
-        print("============================Admin==========================")
+        print("============Doremonangis Pouch of Pien=============")
+        print("========================Admin======================")
         print()
         print("1. Register")
         print("2. Pencarian Gadget Berdasarkan Rarity")
@@ -160,8 +160,8 @@ if role == "Admin":
 elif role == "User":
     while True:
         print()
-        print("============Doraemonangis Mystic Pouch of Pien=============")
-        print("============================User===========================")
+        print("============Doremonangis Pouch of Pien=============")
+        print("========================User=======================")
         print()
         print("1. Pencarian Gadget Berdasarkan Rarity")
         print("2. Pencarian Gadget Berdasarkan Tahun Ditemukan")
