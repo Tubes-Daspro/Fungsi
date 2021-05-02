@@ -120,7 +120,7 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
         index_user_borrow_history = int(input_index_user_borrow_history)
         index_user_borrow_history -= 1
 
-        if index_user_borrow_history > len(user_gadget_borrow_history)-1:
+        if index_user_borrow_history > len(user_gadget_borrow_history)-1 or index_borrow_history < 0:
             is_valid = False
     
     if not(is_valid):
@@ -144,7 +144,7 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
     # Validasi jumlah pengembalian tidak lebih dari jumlah gadget yang dipinjam
     if is_valid and is_operating:
         jumlah_gadget_kembali = int(input_jumlah_gadget_kembali)
-        if jumlah_gadget_kembali > user_gadget_borrow_history[index_user_borrow_history][3]:
+        if jumlah_gadget_kembali > user_gadget_borrow_history[index_user_borrow_history][3] or jumlah_gadget_kembali <= 0:
             is_valid = False
 
     if not(is_valid) and is_operating:
@@ -190,7 +190,7 @@ def kembalikan_gadget(data_gadget,data_gadget_borrow_history,data_gadget_return_
     elif exit_code == 3:
         print("Input tidak valid! Jumlah gadget yang dikembalikan harus dalam bilangan bulat positif\n")
     elif exit_code == 4:
-        print("Input tidak valid! Jumlah gadget yang ingin dikembalikan lebih besar dari jumlah gadget yang dipinjam!\n")
+        print("Input tidak valid! Jumlah gadget yang ingin dikembalikan tidak sesuai dengan jumlah gadget yang dipinjam!\n")
     elif exit_code == 5:
         print("Input tidak valid! Tanggal tidak sesuai format.\n")
 
