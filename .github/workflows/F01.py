@@ -45,7 +45,7 @@ def register(data_user):
         #data_baru[4] = hash_pass(data_baru[4])
         data_baru[5] = "User"
         data_user.append(data_baru)
-    print("Akun", data_baru[1], "berhasil didaftarkan.")
+        print("Akun", data_baru[1], "berhasil didaftarkan.")
     return
 
 #Fungsi FB01
