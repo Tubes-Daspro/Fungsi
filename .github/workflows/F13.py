@@ -1,4 +1,4 @@
-# F13 Melihat Riwayat PengambilanConsumable
+# F13 Melihat Riwayat Pengambilan Consumable
 
 def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data_user):
     # I.S. data_consumable, data_consumable_history, dan data_user terdefinisi 
