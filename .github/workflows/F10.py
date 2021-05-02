@@ -73,7 +73,7 @@ def minta_consumable(data_consumable,data_consumable_history,id_user):
     if is_valid:
     # Validasi jumlah pengambilan tidak melebihi stock yang ada
         jumlah_permintaan = int(input_jumlah_permintaan)
-        if jumlah_permintaan > int(data_consumable[index_item][3]):
+        if jumlah_permintaan > int(data_consumable[index_item][3]) or jumlah_permintaan <= 0:
             is_valid = False
 
     if not(is_valid) and is_operating:
@@ -98,7 +98,7 @@ def minta_consumable(data_consumable,data_consumable_history,id_user):
     elif exit_code == 3:
         print("Input tidak valid! Jumlah pengambilan harus dalam bilangan bulat positif.\n")
     elif exit_code == 4:
-        print("Input tidak valid! Jumlah pengambilan consumable melebihi stock consumable!\n")
+        print("Input tidak valid! Jumlah pengambilan consumable tidak sesuai stock consumable!\n")
 
     return (data_consumable,data_consumable_history)
 
