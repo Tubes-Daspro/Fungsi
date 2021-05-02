@@ -1,4 +1,4 @@
-# F13 Melihat Riwayat Peminjaman Consumable
+# F13 Melihat Riwayat PengambilanConsumable
 
 def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data_user):
     # I.S. data_consumable, data_consumable_history, dan data_user terdefinisi 
@@ -36,7 +36,7 @@ def lihat_riwayat_ambil_consumable(data_consumable_history, data_consumable,data
 
     # ALGORITMA
     # Pembuatan list index dan tanggal
-    list_index_tanggal = [0 for i in range(len(data_gadget_borrow_history))]
+    list_index_tanggal = [0 for i in range(len(data_consumable_history))]
     for i in range(len(data_consumable_history)):
         dd = int(data_consumable_history[i][3][0] + data_consumable_history[i][3][1])
         mm = int(data_consumable_history[i][3][3] + data_consumable_history[i][3][4])
